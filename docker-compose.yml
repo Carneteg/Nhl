@@ -1,0 +1,16 @@
+services:
+  api:
+    build: ./backend
+    volumes: ["nhl-data:/data"]
+    environment:
+      DATABASE_URL: sqlite:////data/nhl.db
+    ports: ["8000:8000"]
+  web:
+    build: ./frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    ports: ["3000:3000"]
+    depends_on: [api]
+volumes:
+  nhl-data:
+
