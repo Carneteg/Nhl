@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Edmonton Hockey Operations</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <aside><div class="brand"><b>EDM</b><span>HOCKEY OPS</span></div><nav id="nav"></nav></aside>
+  <header>
+    <div><strong id="date">—</strong><small id="phase">Loading simulation…</small></div>
+    <div class="metrics"><span>Record <b>0–0–0</b></span><span>Cap space <b id="cap">—</b></span><span>Roster <b id="size">—</b></span><span class="alert">● <b id="unread">0</b> unread</span></div>
+    <button id="advance">Advance one day →</button>
+  </header>
+  <main><div class="crumb">Edmonton Oilers / <span id="crumb">Overview</span></div><section id="content" aria-live="polite"></section></main>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: edmonton-nhl-gm
+    runtime: docker
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: NHLGM_DB
+        value: /var/lib/nhlgm/nhl_gm.sqlite3
+    disk:
+      name: nhlgm-data
+      mountPath: /var/lib/nhlgm
+      sizeGB: 2

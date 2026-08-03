@@ -1,0 +1,1618 @@
+{
+  "generated_from": "2025-26 NHL official season endpoints and cached public CapWages player pages",
+  "season": "20252026",
+  "sync_totals": {
+    "players": 1187,
+    "contracts": 1170,
+    "unknown_contracts": 17,
+    "conflicts": 126
+  },
+  "per_team": [
+    {
+      "team": "ANA",
+      "players": 36,
+      "contracts": 36,
+      "unknown_contracts": 0,
+      "conflicts": 0
+    },
+    {
+      "team": "BOS",
+      "players": 36,
+      "contracts": 36,
+      "unknown_contracts": 0,
+      "conflicts": 1
+    },
+    {
+      "team": "BUF",
+      "players": 42,
+      "contracts": 42,
+      "unknown_contracts": 0,
+      "conflicts": 1
+    },
+    {
+      "team": "CGY",
+      "players": 43,
+      "contracts": 43,
+      "unknown_contracts": 0,
+      "conflicts": 2
+    },
+    {
+      "team": "CAR",
+      "players": 34,
+      "contracts": 34,
+      "unknown_contracts": 0,
+      "conflicts": 0
+    },
+    {
+      "team": "CHI",
+      "players": 34,
+      "contracts": 34,
+      "unknown_contracts": 0,
+      "conflicts": 4
+    },
+    {
+      "team": "COL",
+      "players": 37,
+      "contracts": 37,
+      "unknown_contracts": 0,
+      "conflicts": 2
+    },
+    {
+      "team": "CBJ",
+      "players": 33,
+      "contracts": 31,
+      "unknown_contracts": 2,
+      "conflicts": 1
+    },
+    {
+      "team": "DAL",
+      "players": 30,
+      "contracts": 30,
+      "unknown_contracts": 0,
+      "conflicts": 1
+    },
+    {
+      "team": "DET",
+      "players": 31,
+      "contracts": 31,
+      "unknown_contracts": 0,
+      "conflicts": 0
+    },
+    {
+      "team": "EDM",
+      "players": 38,
+      "contracts": 38,
+      "unknown_contracts": 0,
+      "conflicts": 6
+    },
+    {
+      "team": "FLA",
+      "players": 43,
+      "contracts": 43,
+      "unknown_contracts": 0,
+      "conflicts": 1
+    },
+    {
+      "team": "LAK",
+      "players": 32,
+      "contracts": 32,
+      "unknown_contracts": 0,
+      "conflicts": 0
+    },
+    {
+      "team": "MIN",
+      "players": 40,
+      "contracts": 40,
+      "unknown_contracts": 0,
+      "conflicts": 3
+    },
+    {
+      "team": "MTL",
+      "players": 33,
+      "contracts": 31,
+      "unknown_contracts": 2,
+      "conflicts": 1
+    },
+    {
+      "team": "NSH",
+      "players": 38,
+      "contracts": 38,
+      "unknown_contracts": 0,
+      "conflicts": 8
+    },
+    {
+      "team": "NJD",
+      "players": 41,
+      "contracts": 40,
+      "unknown_contracts": 1,
+      "conflicts": 5
+    },
+    {
+      "team": "NYI",
+      "players": 35,
+      "contracts": 35,
+      "unknown_contracts": 0,
+      "conflicts": 2
+    },
+    {
+      "team": "NYR",
+      "players": 39,
+      "contracts": 39,
+      "unknown_contracts": 0,
+      "conflicts": 5
+    },
+    {
+      "team": "OTT",
+      "players": 41,
+      "contracts": 41,
+      "unknown_contracts": 0,
+      "conflicts": 5
+    },
+    {
+      "team": "PHI",
+      "players": 43,
+      "contracts": 43,
+      "unknown_contracts": 0,
+      "conflicts": 6
+    },
+    {
+      "team": "PIT",
+      "players": 47,
+      "contracts": 43,
+      "unknown_contracts": 4,
+      "conflicts": 8
+    },
+    {
+      "team": "SJS",
+      "players": 33,
+      "contracts": 33,
+      "unknown_contracts": 0,
+      "conflicts": 3
+    },
+    {
+      "team": "SEA",
+      "players": 33,
+      "contracts": 31,
+      "unknown_contracts": 2,
+      "conflicts": 3
+    },
+    {
+      "team": "STL",
+      "players": 38,
+      "contracts": 38,
+      "unknown_contracts": 0,
+      "conflicts": 9
+    },
+    {
+      "team": "TBL",
+      "players": 36,
+      "contracts": 34,
+      "unknown_contracts": 2,
+      "conflicts": 2
+    },
+    {
+      "team": "TOR",
+      "players": 40,
+      "contracts": 40,
+      "unknown_contracts": 0,
+      "conflicts": 10
+    },
+    {
+      "team": "UTA",
+      "players": 32,
+      "contracts": 29,
+      "unknown_contracts": 3,
+      "conflicts": 3
+    },
+    {
+      "team": "VAN",
+      "players": 41,
+      "contracts": 41,
+      "unknown_contracts": 0,
+      "conflicts": 11
+    },
+    {
+      "team": "VGK",
+      "players": 38,
+      "contracts": 38,
+      "unknown_contracts": 0,
+      "conflicts": 8
+    },
+    {
+      "team": "WSH",
+      "players": 34,
+      "contracts": 34,
+      "unknown_contracts": 0,
+      "conflicts": 9
+    },
+    {
+      "team": "WPG",
+      "players": 36,
+      "contracts": 35,
+      "unknown_contracts": 1,
+      "conflicts": 6
+    }
+  ],
+  "unique_nhl_players": 1061,
+  "active_roster_players": 701,
+  "active_per_team": [
+    {
+      "team": "ANA",
+      "active_players": 23
+    },
+    {
+      "team": "BOS",
+      "active_players": 22
+    },
+    {
+      "team": "BUF",
+      "active_players": 30
+    },
+    {
+      "team": "CAR",
+      "active_players": 22
+    },
+    {
+      "team": "CBJ",
+      "active_players": 20
+    },
+    {
+      "team": "CGY",
+      "active_players": 29
+    },
+    {
+      "team": "CHI",
+      "active_players": 23
+    },
+    {
+      "team": "COL",
+      "active_players": 19
+    },
+    {
+      "team": "DAL",
+      "active_players": 21
+    },
+    {
+      "team": "DET",
+      "active_players": 16
+    },
+    {
+      "team": "EDM",
+      "active_players": 19
+    },
+    {
+      "team": "FLA",
+      "active_players": 20
+    },
+    {
+      "team": "LAK",
+      "active_players": 18
+    },
+    {
+      "team": "MIN",
+      "active_players": 25
+    },
+    {
+      "team": "MTL",
+      "active_players": 27
+    },
+    {
+      "team": "NJD",
+      "active_players": 20
+    },
+    {
+      "team": "NSH",
+      "active_players": 21
+    },
+    {
+      "team": "NYI",
+      "active_players": 19
+    },
+    {
+      "team": "NYR",
+      "active_players": 23
+    },
+    {
+      "team": "OTT",
+      "active_players": 26
+    },
+    {
+      "team": "PHI",
+      "active_players": 28
+    },
+    {
+      "team": "PIT",
+      "active_players": 23
+    },
+    {
+      "team": "SEA",
+      "active_players": 21
+    },
+    {
+      "team": "SJS",
+      "active_players": 17
+    },
+    {
+      "team": "STL",
+      "active_players": 21
+    },
+    {
+      "team": "TBL",
+      "active_players": 22
+    },
+    {
+      "team": "TOR",
+      "active_players": 18
+    },
+    {
+      "team": "UTA",
+      "active_players": 24
+    },
+    {
+      "team": "VAN",
+      "active_players": 20
+    },
+    {
+      "team": "VGK",
+      "active_players": 22
+    },
+    {
+      "team": "WPG",
+      "active_players": 19
+    },
+    {
+      "team": "WSH",
+      "active_players": 23
+    }
+  ],
+  "open_conflicts": [
+    {
+      "full_name": "Jeffrey Viel",
+      "old_value": "ANA",
+      "new_value": "BOS",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/BOS/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Olen Zellweger",
+      "old_value": "ANA",
+      "new_value": "BUF",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/BUF/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Ryan Strome",
+      "old_value": "ANA",
+      "new_value": "CGY",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/CGY/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "A.J. Greer",
+      "old_value": "ANA",
+      "new_value": "FLA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/FLA/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Mason McTavish",
+      "old_value": "ANA",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/STL/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "John Carlson",
+      "old_value": "ANA",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "John Beecher",
+      "old_value": "BOS",
+      "new_value": "CGY",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/CGY/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Lukas Reichel",
+      "old_value": "BOS",
+      "new_value": "CHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/CHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Vladislav Kolyachonok",
+      "old_value": "BOS",
+      "new_value": "DAL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/DAL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "JJ Peterka",
+      "old_value": "BOS",
+      "new_value": "UTA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/UTA/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Lukas Reichel",
+      "old_value": "BOS",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Bowen Byram",
+      "old_value": "BUF",
+      "new_value": "CHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/CHI/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jordan Greenway",
+      "old_value": "BUF",
+      "new_value": "CHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/CHI/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Louis Crevier",
+      "old_value": "BUF",
+      "new_value": "CHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/CHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Sam Carrick",
+      "old_value": "BUF",
+      "new_value": "NYR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NYR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Michael Kesselring",
+      "old_value": "BUF",
+      "new_value": "SJS",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/SJS/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Isak Rosen",
+      "old_value": "BUF",
+      "new_value": "WPG",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/WPG/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jacob Bryson",
+      "old_value": "BUF",
+      "new_value": "WPG",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WPG/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Logan Stanley",
+      "old_value": "BUF",
+      "new_value": "WPG",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WPG/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Luke Schenn",
+      "old_value": "BUF",
+      "new_value": "WPG",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WPG/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Tanner Pearson",
+      "old_value": "BUF",
+      "new_value": "WPG",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WPG/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Alex Tuch",
+      "old_value": "BUF",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/WSH/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Noah Philp",
+      "old_value": "CAR",
+      "new_value": "EDM",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/EDM/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nicolas Deslauriers",
+      "old_value": "CAR",
+      "new_value": "PHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Egor Zamula",
+      "old_value": "CBJ",
+      "new_value": "PHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Danton Heinen",
+      "old_value": "CBJ",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PIT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Egor Chinakhov",
+      "old_value": "CBJ",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/PIT/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Mason Marchment",
+      "old_value": "CBJ",
+      "new_value": "SEA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/SEA/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Conor Garland",
+      "old_value": "CBJ",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nazem Kadri",
+      "old_value": "CGY",
+      "new_value": "COL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/COL/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Victor Olofsson",
+      "old_value": "CGY",
+      "new_value": "COL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/COL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Maxim Tsyplakov",
+      "old_value": "CGY",
+      "new_value": "NJD",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NJD/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Simon Nemec",
+      "old_value": "CGY",
+      "new_value": "NJD",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NJD/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Maxim Tsyplakov",
+      "old_value": "CGY",
+      "new_value": "NYI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NYI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brennan Othmann",
+      "old_value": "CGY",
+      "new_value": "NYR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NYR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "MacKenzie Weegar",
+      "old_value": "CGY",
+      "new_value": "UTA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/UTA/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Olli Maatta",
+      "old_value": "CGY",
+      "new_value": "UTA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/UTA/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Rasmus Andersson",
+      "old_value": "CGY",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Zach Whitecloud",
+      "old_value": "CGY",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Andrew Mangiapane",
+      "old_value": "CHI",
+      "new_value": "EDM",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/EDM/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Colton Dach",
+      "old_value": "CHI",
+      "new_value": "EDM",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/EDM/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Connor Murphy",
+      "old_value": "CHI",
+      "new_value": "EDM",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/EDM/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jason Dickinson",
+      "old_value": "CHI",
+      "new_value": "EDM",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/EDM/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nick Foligno",
+      "old_value": "CHI",
+      "new_value": "MIN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/MIN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Andre Burakovsky",
+      "old_value": "CHI",
+      "new_value": "OTT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/OTT/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Valeri Nichushkin",
+      "old_value": "COL",
+      "new_value": "CBJ",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/CBJ/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brett Kulak",
+      "old_value": "COL",
+      "new_value": "EDM",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/EDM/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Fedor Svechkov",
+      "old_value": "COL",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jack Drury",
+      "old_value": "COL",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/NSH/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nick Blankenburg",
+      "old_value": "COL",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Ross Colton",
+      "old_value": "COL",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/NSH/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brett Kulak",
+      "old_value": "COL",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PIT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Ilya Solovyov",
+      "old_value": "COL",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/PIT/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Samuel Girard",
+      "old_value": "COL",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/PIT/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nicolas Roy",
+      "old_value": "COL",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Ilya Lyubushkin",
+      "old_value": "DAL",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/NSH/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Michael Bunting",
+      "old_value": "DAL",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Tyler Myers",
+      "old_value": "DAL",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "David Perron",
+      "old_value": "DET",
+      "new_value": "OTT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/OTT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Elmer Soderblom",
+      "old_value": "DET",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/PIT/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jonatan Berggren",
+      "old_value": "DET",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Justin Faulk",
+      "old_value": "DET",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Spencer Stastney",
+      "old_value": "EDM",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Stuart Skinner",
+      "old_value": "EDM",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PIT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Tristan Jarry",
+      "old_value": "EDM",
+      "new_value": "PIT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PIT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Troy Stecher",
+      "old_value": "EDM",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/TOR/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jeff Petry",
+      "old_value": "FLA",
+      "new_value": "MIN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/MIN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Vinnie Hinostroza",
+      "old_value": "FLA",
+      "new_value": "MIN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/MIN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Evan Rodrigues",
+      "old_value": "FLA",
+      "new_value": "NJD",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/NJD/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jacob Markstrom",
+      "old_value": "FLA",
+      "new_value": "NJD",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NJD/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jesper Boqvist",
+      "old_value": "FLA",
+      "new_value": "NJD",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/NJD/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brady Tkachuk",
+      "old_value": "FLA",
+      "new_value": "OTT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/OTT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Donovan Sebrango",
+      "old_value": "FLA",
+      "new_value": "OTT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/OTT/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Garnet Hathaway",
+      "old_value": "FLA",
+      "new_value": "PHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Mackie Samoskevich",
+      "old_value": "FLA",
+      "new_value": "SEA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/SEA/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Akira Schmid",
+      "old_value": "FLA",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Cole Reinhardt",
+      "old_value": "FLA",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Phillip Danault",
+      "old_value": "LAK",
+      "new_value": "MTL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/MTL/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Artemi Panarin",
+      "old_value": "LAK",
+      "new_value": "NYR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NYR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Warren Foegele",
+      "old_value": "LAK",
+      "new_value": "OTT",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/OTT/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Mathieu Joseph",
+      "old_value": "LAK",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Corey Perry",
+      "old_value": "LAK",
+      "new_value": "TBL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TBL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Scott Laughton",
+      "old_value": "LAK",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Michael McCarron",
+      "old_value": "MIN",
+      "new_value": "NSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Bobby Brink",
+      "old_value": "MIN",
+      "new_value": "PHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "David Jiricek",
+      "old_value": "MIN",
+      "new_value": "PHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/PHI/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Robby Fabbri",
+      "old_value": "MIN",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Liam Ohgren",
+      "old_value": "MIN",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/VAN/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Marco Rossi",
+      "old_value": "MIN",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/VAN/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Quinn Hughes",
+      "old_value": "MIN",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Zeev Buium",
+      "old_value": "MIN",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/VAN/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Alexandre Texier",
+      "old_value": "MTL",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Sammy Blais",
+      "old_value": "MTL",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brendan Gallagher",
+      "old_value": "MTL",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/VAN/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Ondrej Palat",
+      "old_value": "NJD",
+      "new_value": "NYI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/NYI/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Luke Glendening",
+      "old_value": "NJD",
+      "new_value": "PHI",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/PHI/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nick Bjugstad",
+      "old_value": "NJD",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Declan Chisholm",
+      "old_value": "NJD",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Adam Edstrom",
+      "old_value": "NSH",
+      "new_value": "NYR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NYR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nils Hoglander",
+      "old_value": "NSH",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Cole Smith",
+      "old_value": "NSH",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Carson Soucy",
+      "old_value": "NYI",
+      "new_value": "NYR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/NYR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brayden Schenn",
+      "old_value": "NYI",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/STL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jonathan Drouin",
+      "old_value": "NYI",
+      "new_value": "STL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/STL/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Tye Kartye",
+      "old_value": "NYR",
+      "new_value": "SEA",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/SEA/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Vincent Iorio",
+      "old_value": "NYR",
+      "new_value": "SJS",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/SJS/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Pavel Dorofeyev",
+      "old_value": "NYR",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "William Eklund",
+      "old_value": "OTT",
+      "new_value": "SJS",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/SJS/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Emil Andrae",
+      "old_value": "PHI",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/TOR/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Joseph Woll",
+      "old_value": "PHI",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Simon Benoit",
+      "old_value": "PHI",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Kaedan Korczak",
+      "old_value": "PIT",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VGK/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Parker Wotherspoon",
+      "old_value": "PIT",
+      "new_value": "VGK",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/VGK/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "John St. Ivany",
+      "old_value": "PIT",
+      "new_value": "WPG",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/WPG/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Hendrix Lapierre",
+      "old_value": "PIT",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Bobby McMann",
+      "old_value": "SEA",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Kiefer Sherwood",
+      "old_value": "SJS",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Timothy Liljegren",
+      "old_value": "SJS",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/WSH/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jack Finley",
+      "old_value": "STL",
+      "new_value": "TBL",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TBL/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Brandon Carlo",
+      "old_value": "STL",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/TOR/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Connor McMichael",
+      "old_value": "STL",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Jordan Kyrou",
+      "old_value": "STL",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/WSH/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Darren Raddysh",
+      "old_value": "TBL",
+      "new_value": "TOR",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/roster/TOR/20252026",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Curtis Douglas",
+      "old_value": "TBL",
+      "new_value": "VAN",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/VAN/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "David Kampf",
+      "old_value": "VAN",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    },
+    {
+      "full_name": "Nic Dowd",
+      "old_value": "VGK",
+      "new_value": "WSH",
+      "old_source": "previous 2025-26 team evidence",
+      "new_source": "https://api-web.nhle.com/v1/club-stats/WSH/20252026/2",
+      "recommendation": "Review dated official transaction/opening roster; season membership retained for both clubs",
+      "status": "OPEN"
+    }
+  ],
+  "unknown_cap_hits": [
+    {
+      "full_name": "Zachary Aston-Reese",
+      "real_team_id": "CBJ",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/zachary-aston-reese",
+      "source_url": "https://capwages.com/players/zachary-aston-reese"
+    },
+    {
+      "full_name": "Samuel Montembeault",
+      "real_team_id": "MTL",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/samuel-montembeault",
+      "source_url": "https://capwages.com/players/samuel-montembeault"
+    },
+    {
+      "full_name": "Zachary Bolduc",
+      "real_team_id": "MTL",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/zachary-bolduc",
+      "source_url": "https://capwages.com/players/zachary-bolduc"
+    },
+    {
+      "full_name": "Arseny Gritsyuk",
+      "real_team_id": "NJD",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/arseny-gritsyuk",
+      "source_url": "https://capwages.com/players/arseny-gritsyuk"
+    },
+    {
+      "full_name": "Ben Kindel",
+      "real_team_id": "PIT",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/ben-kindel",
+      "source_url": "https://capwages.com/players/ben-kindel"
+    },
+    {
+      "full_name": "Egor Chinakhov",
+      "real_team_id": "PIT",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/egor-chinakhov",
+      "source_url": "https://capwages.com/players/egor-chinakhov"
+    },
+    {
+      "full_name": "Samuel Poulin",
+      "real_team_id": "PIT",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/samuel-poulin",
+      "source_url": "https://capwages.com/players/samuel-poulin"
+    },
+    {
+      "full_name": "Sergei Murashov",
+      "real_team_id": "PIT",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/sergei-murashov",
+      "source_url": "https://capwages.com/players/sergei-murashov"
+    },
+    {
+      "full_name": "Joshua Mahura",
+      "real_team_id": "SEA",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/joshua-mahura",
+      "source_url": "https://capwages.com/players/joshua-mahura"
+    },
+    {
+      "full_name": "Nikke Kokko",
+      "real_team_id": "SEA",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/nikke-kokko",
+      "source_url": "https://capwages.com/players/nikke-kokko"
+    },
+    {
+      "full_name": "Max Crozier",
+      "real_team_id": "TBL",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/max-crozier",
+      "source_url": "https://capwages.com/players/max-crozier"
+    },
+    {
+      "full_name": "Nick Paul",
+      "real_team_id": "TBL",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/nick-paul",
+      "source_url": "https://capwages.com/players/nick-paul"
+    },
+    {
+      "full_name": "Alexander Kerfoot",
+      "real_team_id": "UTA",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/alexander-kerfoot",
+      "source_url": "https://capwages.com/players/alexander-kerfoot"
+    },
+    {
+      "full_name": "Cam Hebig",
+      "real_team_id": "UTA",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/cam-hebig",
+      "source_url": "https://capwages.com/players/cam-hebig"
+    },
+    {
+      "full_name": "Dmitri Simashev",
+      "real_team_id": "UTA",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/dmitri-simashev",
+      "source_url": "https://capwages.com/players/dmitri-simashev"
+    },
+    {
+      "full_name": "John St. Ivany",
+      "real_team_id": "WPG",
+      "field": "cap_hit",
+      "reason": "HTTP 404 for https://capwages.com/players/john-st-ivany",
+      "source_url": "https://capwages.com/players/john-st-ivany"
+    }
+  ]
+}
