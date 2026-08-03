@@ -1,0 +1,9 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+data/cache/
+*.xlsx
+*.xls
+*.sqlite3
+*.sqlite
+*.db
