@@ -1,7 +1,6 @@
 from __future__ import annotations
-import json, uuid, shutil
+import json, uuid
 from datetime import date, datetime, timedelta, timezone
-from pathlib import Path
 from .db import rows, json_dump, set_setting
 
 ACTIVE={"ACTIVE","IR","LTIR"}; EXCLUDED={"TRADED","AHL","JUNIOR","EUROPE","UNSIGNED","RETIRED","HISTORICAL"}
@@ -21,18 +20,24 @@ def new_simulation(db,team="EDM",start="2025-07-01"):
     db.execute("INSERT INTO simulation_state VALUES(?,?,?,?,?,?,?,?,?)",(sid,team,start,start,season,phase_for(date.fromisoformat(start)),1,1,now))
     db.execute("""INSERT INTO simulation_players(simulation_id,player_id,team_id,level,status)
       SELECT ?,id,real_team_id,level,roster_status FROM players WHERE real_team_id IS NOT NULL""",(sid,))
+    db.execute("""INSERT INTO simulation_contracts(simulation_id,contract_id,player_id,team_id,cap_hit,salary,end_season,expiry_status,nmc,ntc,retained_salary,buried_cap)
+      SELECT ?,c.id,c.player_id,c.team_id,c.cap_hit,c.salary,c.end_season,c.expiry_status,c.nmc,c.ntc,c.retained_salary,c.buried_cap
+      FROM contracts c JOIN players p ON p.id=c.player_id AND p.real_team_id=c.team_id""",(sid,))
+    db.execute("""INSERT INTO simulation_draft_picks(simulation_id,pick_id,draft_year,round,original_owner_id,current_owner_id,conditions,protection,status)
+      SELECT ?,id,draft_year,round,original_owner_id,current_owner_id,conditions,protection,status FROM draft_picks""",(sid,))
     db.execute("""INSERT INTO roster_assignments(simulation_id,player_id,team_id,league,status,start_date,simulation_status)
       SELECT ?,id,real_team_id,'NHL',roster_status,?,'BASELINE_COPY' FROM players WHERE real_team_id IS NOT NULL AND level='NHL'""",(sid,start))
-    messages=[("Daryl Katz / Ägarkontoret","Säsongens mandat","OWNER","HIGH","Bygg en hållbar utmanare utan att bryta mot lönetaket."),("Huvudtränaren","Första rostermötet","COACH","HIGH","Vi behöver fastställa kedjor och special teams inför camp."),("Cap-specialisten","Dataverifiering krävs","CAP","MEDIUM","Kontrakt utan verifierad cap hit ligger i verifieringskön och räknas inte som fakta.")]
-    for sender,subject,cat,pri,content in messages: db.execute("INSERT INTO inbox(simulation_id,sender,subject,category,priority,content,actions,created_at) VALUES(?,?,?,?,?,?,?,?)",(sid,sender,subject,cat,pri,content,json_dump(["Öppna","Delegera","Skjut upp"]),now))
-    db.execute("INSERT INTO news(simulation_id,kind,headline,body,created_at) VALUES(?,?,?,?,?)",(sid,"OFFICIAL","Ny Edmonton-simulation skapad",f"Den verkliga baslinjen kopierades {start}. Alternativhistoriken börjar med nästa GM-beslut.",now))
+    messages=[("Daryl Katz / Owner's Office","Season mandate","OWNER","HIGH","Build a sustainable contender without violating the salary cap."),("Head Coach","First roster meeting","COACH","HIGH","We need to set our lines and special-teams units before camp."),("Cap Specialist","Data verification required","CAP","MEDIUM","Contracts without a verified cap hit remain in the verification queue and are not treated as facts.")]
+    for sender,subject,cat,pri,content in messages: db.execute("INSERT INTO inbox(simulation_id,sender,subject,category,priority,content,actions,created_at) VALUES(?,?,?,?,?,?,?,?)",(sid,sender,subject,cat,pri,content,json_dump(["Open","Delegate","Postpone"]),now))
+    db.execute("INSERT INTO news(simulation_id,kind,headline,body,created_at) VALUES(?,?,?,?,?)",(sid,"OFFICIAL","New Edmonton simulation created",f"The real-world baseline was copied on {start}. The alternate timeline begins with the next GM decision.",now))
     set_setting(db,"active_simulation_id",sid); db.commit(); return sid
-def cap_summary(db,simulation_id=None,cap_limit=95_500_000):
+def cap_summary(db,simulation_id=None,cap_limit=95_500_000,team_id=None):
     sim=simulation_id or (active_sim(db)["id"] if active_sim(db) else None)
-    q="""SELECT c.*,sp.status,sp.level FROM contracts c JOIN simulation_players sp
-      ON sp.player_id=c.player_id AND sp.simulation_id=? AND sp.team_id=c.team_id
-      WHERE sp.team_id=(SELECT team_id FROM simulation_state WHERE id=?)"""
-    cs=rows(db,q,(sim,sim)) if sim else []
+    selected_team=team_id or (db.execute("SELECT team_id FROM simulation_state WHERE id=?",(sim,)).fetchone()[0] if sim else None)
+    q="""SELECT c.*,sp.status,sp.level FROM simulation_contracts c JOIN simulation_players sp
+      ON sp.player_id=c.player_id AND sp.simulation_id=c.simulation_id AND sp.team_id=c.team_id
+      WHERE c.simulation_id=? AND sp.team_id=?"""
+    cs=rows(db,q,(sim,selected_team)) if sim else []
     active=[c for c in cs if c["status"] in ACTIVE and c["level"]=="NHL"]
     active_cap=sum(c["cap_hit"] or 0 for c in active); retained=sum(c["retained_salary"] or 0 for c in cs); buried=sum(c["buried_cap"] or 0 for c in cs if c["level"]=="AHL")
     total=active_cap+retained+buried
@@ -53,6 +58,9 @@ def audits(db,simulation_id=None):
     baseline_missing=rows(db,"""SELECT p.full_name,p.real_team_id FROM players p LEFT JOIN contracts c
       ON c.player_id=p.id AND c.team_id=p.real_team_id WHERE p.level='NHL' AND p.real_team_id IS NOT NULL AND c.cap_hit IS NULL""")
     if baseline_missing: failures.append({"code":"BASELINE_CONTRACT_CAP_UNKNOWN","severity":"verification","rows":baseline_missing})
+    cornerstone_errors=rows(db,"""SELECT full_name,real_team_id FROM players
+      WHERE nhl_player_id IN (8478402,8477934) AND real_team_id<>'EDM'""")
+    if cornerstone_errors: failures.append({"code":"REAL_BASELINE_TEAM_MISMATCH","rows":cornerstone_errors})
     return {"ok":not [f for f in failures if f.get("severity")!="verification"],"failures":failures,"cap":cap_summary(db,sim)}
 def advance(db):
     sim=active_sim(db)
@@ -60,7 +68,7 @@ def advance(db):
     nxt=date.fromisoformat(sim["simulation_date"])+timedelta(days=1)
     db.execute("UPDATE simulation_state SET simulation_date=?,phase=?,day=day+1 WHERE id=?",(nxt.isoformat(),phase_for(nxt),sim["id"]))
     db.execute("INSERT INTO simulation_events(simulation_id,event_date,event_type,payload) VALUES(?,?,?,?)",(sim["id"],nxt.isoformat(),"DAILY_AI_EVALUATION",json_dump({"teams_evaluated":32,"checks":["roster","cap","injuries","needs","deadlines"]})))
-    db.execute("INSERT INTO news(simulation_id,kind,headline,body,created_at) VALUES(?,?,?,?,?)",(sim["id"],"ANALYSIS",f"Ligakontoret: {nxt.isoformat()}","Samtliga 32 AI-GM:ar har utvärderat roster, cap och marknad.",datetime.now(timezone.utc).isoformat())); db.commit(); return nxt.isoformat()
+    db.execute("INSERT INTO news(simulation_id,kind,headline,body,created_at) VALUES(?,?,?,?,?)",(sim["id"],"ANALYSIS",f"League office: {nxt.isoformat()}","All 32 AI GMs evaluated their rosters, cap positions, and the trade market.",datetime.now(timezone.utc).isoformat())); db.commit(); return nxt.isoformat()
 def inbox_action(db,message_id,action):
     row=db.execute("SELECT * FROM inbox WHERE id=?",(message_id,)).fetchone()
     if not row: raise ValueError("Message not found")
