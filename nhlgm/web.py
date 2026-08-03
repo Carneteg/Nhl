@@ -1,5 +1,5 @@
 from __future__ import annotations
-import json
+import json, os
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
@@ -8,7 +8,7 @@ from .db import connect,migrate,rows,DEFAULT_DB
 from .services import active_sim,cap_summary,advance,inbox_action,audits
 
 ROOT=Path(__file__).resolve().parents[1]; STATIC=ROOT/"web"
-NAV=[("overview","Översikt"),("inbox","Inkorg"),("news","Nyheter"),("roster","Trupp"),("lines","Kedjor"),("games","Matcher"),("stats","Statistik"),("contracts","Kontrakt"),("cap","Lönetak"),("injuries","Skador"),("waivers","Waivers"),("ahl","Farmarlag"),("prospects","Prospects"),("scouting","Scouting"),("draft","Draft"),("free-agency","Free Agency"),("trades","Trades"),("staff","Personal"),("coach","Tränare"),("owner","Ägare"),("league","Liga"),("teams","Andra lag"),("gms","Andra GM"),("history","Historik"),("settings","Inställningar")]
+NAV=[("overview","Ãversikt"),("inbox","Inkorg"),("news","Nyheter"),("roster","Trupp"),("lines","Kedjor"),("games","Matcher"),("stats","Statistik"),("contracts","Kontrakt"),("cap","LÃ¶netak"),("injuries","Skador"),("waivers","Waivers"),("ahl","Farmarlag"),("prospects","Prospects"),("scouting","Scouting"),("draft","Draft"),("free-agency","Free Agency"),("trades","Trades"),("staff","Personal"),("coach","TrÃ¤nare"),("owner","Ãgare"),("league","Liga"),("teams","Andra lag"),("gms","Andra GM"),("history","Historik"),("settings","InstÃ¤llningar")]
 def snapshot(db):
     sim=active_sim(db); sid=sim["id"] if sim else ""
     roster=rows(db,"SELECT p.id,p.full_name,p.primary_position,p.date_of_birth,p.jersey_number,sp.level,sp.status,sp.morale,sp.form FROM simulation_players sp JOIN players p ON p.id=sp.player_id WHERE sp.simulation_id=? AND sp.team_id='EDM' ORDER BY p.primary_position,p.full_name",(sid,))
@@ -31,7 +31,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
           with connect(self.db_path) as db:
             if self.path=="/api/advance": result={"date":advance(db)}
-            elif self.path.startswith("/api/inbox/"): inbox_action(db,int(self.path.rsplit('/',1)[1]),body.get("action","Öppna")); result={"ok":True}
+            elif self.path.startswith("/api/inbox/"): inbox_action(db,int(self.path.rsplit('/',1)[1]),body.get("action","Ãppna")); result={"ok":True}
             elif self.path=="/api/roster-action":
                 if body.get("action") not in {"AHL","NHL","TRADE_BLOCK","WAIVERS"}: raise ValueError("Invalid action")
                 sim=active_sim(db); pid=body["player_id"]
@@ -43,9 +43,11 @@ class Handler(BaseHTTPRequestHandler):
           return self._json(result)
         except (ValueError,KeyError) as e: return self._json({"error":str(e)},400)
     def log_message(self,fmt,*args): pass
-def serve(host="127.0.0.1",port=8000,db_path=DEFAULT_DB):
+def serve(host=None,port=None,db_path=DEFAULT_DB):
+    host = host or os.environ.get("HOST", "0.0.0.0")
+    port = int(port if port is not None else os.environ.get("PORT", "8000"))
     Handler.db_path=db_path
     with connect(db_path) as db: migrate(db)
-    print(f"NHL GM web app: http://{host}:{port}")
+    print(f"NHL GM web app binding to http://{host}:{port}", flush=True)
     ThreadingHTTPServer((host,port),Handler).serve_forever()
 
