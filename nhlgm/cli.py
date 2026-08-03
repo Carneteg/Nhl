@@ -43,7 +43,7 @@ def parser():
     workbook = sub.add_parser("export:franchise")
     workbook.add_argument("--output", default="exports/Edmonton_Oilers_GM_Simulation_2025_26_v2.0.xlsx")
     web = sub.add_parser("web")
-    web.add_argument("--host", default="127.0.0.1")
+    web.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))
     web.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     return root
 
