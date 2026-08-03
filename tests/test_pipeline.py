@@ -88,6 +88,15 @@ def test_baseline_isolated_from_simulation(db):
     assert db.execute("SELECT real_team_id FROM players").fetchone()[0] == "EDM"
 
 
+def test_audit_rejects_fictional_mcdavid_team(db):
+    sync_team_roster(db, client=FakeNHL(), contracts=False)
+    db.execute("UPDATE players SET real_team_id='SJS' WHERE nhl_player_id=8478402")
+    db.commit()
+    result = audits(db)
+    assert not result["ok"]
+    assert any(issue["code"] == "REAL_BASELINE_TEAM_MISMATCH" for issue in result["failures"])
+
+
 def test_league_dry_run_rolls_back_reset(db):
     sync_team_roster(db, client=FakeNHL(), contracts=False)
     before = db.execute("SELECT count(*) FROM players WHERE real_team_id='EDM'").fetchone()[0]
@@ -99,7 +108,7 @@ def test_cap_excludes_ahl_traded_and_retained_once(db):
     sync_team_roster(db, client=FakeNHL(), contract_client=FakeCap())
     sid = new_simulation(db)
     assert cap_summary(db, sid)["total_cap_charge"] == 12_500_000
-    db.execute("UPDATE contracts SET retained_salary=1000000")
+    db.execute("UPDATE simulation_contracts SET retained_salary=1000000 WHERE simulation_id=?", (sid,))
     db.execute("UPDATE simulation_players SET status='TRADED' WHERE simulation_id=?", (sid,))
     db.commit()
     assert cap_summary(db, sid)["total_cap_charge"] == 1_000_000
