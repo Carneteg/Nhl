@@ -8,10 +8,7 @@ services:
     envVars:
       - key: NHLGM_DB
         value: /var/lib/nhlgm/nhl_gm.sqlite3
-      - key: PORT
-        value: "8000"
     disk:
       name: nhlgm-data
       mountPath: /var/lib/nhlgm
       sizeGB: 2
-
