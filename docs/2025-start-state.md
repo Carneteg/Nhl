@@ -4,4 +4,4 @@ The default date is `2025-07-01`, phase `FREE_AGENCY`, with the user controlling
 
 `simulation:new` copies that baseline into isolated simulation player, contract, and draft-pick tables. Real-world records never move when the user later completes a simulation trade. Audits explicitly reject a baseline that places Connor McDavid or Leon Draisaitl outside Edmonton.
 
-The Render startup script stores a `2025-26-real-v2` marker beside the persistent database. A deployment created by an older baseline importer is rebuilt once; subsequent restarts reuse the verified database and do not repeatedly reset the simulation.
+The Render startup script stores a `2025-26-contracts-v3` marker beside the persistent database. A deployment created by an older baseline importer is rebuilt once so all active players receive verified cap hits and expiry years; subsequent restarts reuse the verified database and do not repeatedly reset the simulation.

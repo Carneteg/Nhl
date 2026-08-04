@@ -15,10 +15,11 @@ import unicodedata
 import urllib.error
 import urllib.request
 import uuid
+from difflib import SequenceMatcher
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from .db import json_dump, stable_player_id
+from .db import json_dump, rows, stable_player_id
 
 NHL_API = "https://api-web.nhle.com/v1"
 CAPWAGES = "https://capwages.com"
@@ -81,11 +82,47 @@ class NHLClient(CachedHttpClient):
 class CapWagesClient(CachedHttpClient):
     def __init__(self, cache=Path("data/cache/capwages"), delay=0.2, retries=3):
         super().__init__(cache, delay, retries)
+        self._slug_cache = None
 
     def player(self, slug: str, force: bool = False):
         url = f"{CAPWAGES}/players/{slug}"
         html = self.get_bytes(url, force).decode("utf-8", "replace")
         return parse_capwages_page(html), url
+
+    def _player_slugs(self, force=False):
+        if self._slug_cache is not None and not force:
+            return self._slug_cache
+        index_url = f"{CAPWAGES}/sitemap.xml"
+        index = self.get_bytes(index_url, force).decode("utf-8", "replace")
+        sitemap_urls = re.findall(r"<loc>(https://capwages\.com/sitemap-\d+\.xml)</loc>", index)
+        slugs = set()
+        for url in sitemap_urls:
+            content = self.get_bytes(url, force).decode("utf-8", "replace")
+            slugs.update(re.findall(r"https://capwages\.com/players/([^<]+)", content))
+        self._slug_cache = sorted(slugs)
+        return self._slug_cache
+
+    def resolve_slug(self, full_name: str, force=False):
+        wanted = player_slug(full_name)
+        surname = wanted.split("-")[-1]
+        candidates = [slug for slug in self._player_slugs(force) if slug.split("-")[-1] == surname]
+        if not candidates:
+            raise SourceError(f"no CapWages player candidate for {full_name}")
+        ranked = sorted(((SequenceMatcher(None, wanted, slug).ratio(), slug) for slug in candidates), reverse=True)
+        best_score, best_slug = ranked[0]
+        runner_up = ranked[1][0] if len(ranked) > 1 else 0
+        if best_score < 0.68 or best_score - runner_up < 0.04:
+            raise SourceError(f"ambiguous CapWages player match for {full_name}")
+        return best_slug
+
+    def player_for_name(self, full_name: str, force=False):
+        direct = player_slug(full_name)
+        try:
+            return self.player(direct, force)
+        except SourceError as exc:
+            if "HTTP 404" not in str(exc):
+                raise
+        return self.player(self.resolve_slug(full_name, force), force)
 
 
 def _text(value):
@@ -229,7 +266,8 @@ def sync_team_roster(db, team="EDM", season="20252026", dry_run=False, force=Fal
         if not contracts:
             continue
         try:
-            cap_player, cap_url = cap.player(player_slug(name), force)
+            cap_player, cap_url = (cap.player_for_name(name, force) if hasattr(cap, "player_for_name")
+                                   else cap.player(player_slug(name), force))
             found = contract_for_season(cap_player, label)
             cap_src = source_record(db, "CapWages public player page", cap_url, "next-data/contracts", cap_player, "MEDIUM", "capwages-next-data-v1")
             if not found:
@@ -248,7 +286,7 @@ def sync_team_roster(db, team="EDM", season="20252026", dry_run=False, force=Fal
                cap_hit=excluded.cap_hit,salary=excluded.salary,contract_type=excluded.contract_type,
                expiry_status=excluded.expiry_status,nmc=excluded.nmc,ntc=excluded.ntc,
                verification_status=excluded.verification_status,source_record_id=excluded.source_record_id""",
-              (pid, team, int(start[:4]), int(end[:4]), hit, salary, contract.get("type"), "UNKNOWN", expiry,
+              (pid, team, int(start[:4]), 2000 + int(end[-2:]), hit, salary, contract.get("type"), "UNKNOWN", expiry,
                int("NMC" in clause), clause if "NTC" in clause else None, "SECONDARY_VERIFIED", cap_src))
             queue_unknown(db, "contract", pid, "one_two_way",
                           "Public contract source does not expose a reliable one-way/two-way field", cap_url)
@@ -293,6 +331,14 @@ def sync_league(db, season="20252026", teams=None, dry_run=False, force=False, c
         results.append(sync_team_roster(db, team, season, False, force, client, contract_client, contracts, False))
     summary = {"run_id": run_id, "season": season, "dry_run": dry_run, "teams": results,
                "totals": {key: sum(r[key] for r in results) for key in ("players", "contracts", "unknown_contracts", "conflicts")}}
+    if contracts:
+        gaps = rows(db,"""SELECT p.full_name,p.real_team_id FROM players p LEFT JOIN contracts c
+          ON c.player_id=p.id AND c.team_id=p.real_team_id
+          WHERE p.level='NHL' AND p.roster_status='ACTIVE'
+          GROUP BY p.id HAVING coalesce(max(c.cap_hit),0)<=0 OR max(c.end_season) IS NULL""")
+        summary["active_contract_gaps"] = gaps
+        if gaps:
+            raise SourceError(f"contract quality gate failed for {len(gaps)} active NHL players")
     db.execute("UPDATE sync_runs SET finished_at=?,status=?,summary=? WHERE id=?",
                (datetime.now(timezone.utc).isoformat(), "DRY_RUN" if dry_run else "COMPLETE", json_dump(summary), run_id))
     if dry_run:

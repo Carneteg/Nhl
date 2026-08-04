@@ -12,7 +12,11 @@ ROOT=Path(__file__).resolve().parents[1]; STATIC=ROOT/"web"
 NAV=[("overview","Overview"),("inbox","Inbox"),("news","News"),("roster","Roster"),("lines","Lines"),("games","Games"),("stats","Stats"),("contracts","Contracts"),("cap","Cap"),("injuries","Injuries"),("waivers","Waivers"),("ahl","AHL / Farm Team"),("prospects","Prospects"),("scouting","Scouting"),("draft","Draft"),("free-agency","Free Agency"),("trades","Trades"),("staff","Staff"),("coach","Coach"),("owner","Owner"),("league","League"),("teams","Other Teams"),("gms","Other GMs"),("history","History"),("settings","Settings")]
 def snapshot(db):
     sim=active_sim(db); sid=sim["id"] if sim else ""
-    roster=rows(db,"SELECT p.id,p.full_name,p.primary_position,p.date_of_birth,p.jersey_number,sp.level,sp.status,sp.morale,sp.form FROM simulation_players sp JOIN players p ON p.id=sp.player_id WHERE sp.simulation_id=? AND sp.team_id='EDM' ORDER BY p.primary_position,p.full_name",(sid,))
+    roster=rows(db,"""SELECT p.id,p.full_name,p.primary_position,p.date_of_birth,p.age_at_start,p.jersey_number,
+      sp.level,sp.status,sp.morale,sp.form,c.cap_hit,c.end_season,c.expiry_status,c.nmc,c.ntc
+      FROM simulation_players sp JOIN players p ON p.id=sp.player_id
+      LEFT JOIN simulation_contracts c ON c.simulation_id=sp.simulation_id AND c.player_id=sp.player_id AND c.team_id=sp.team_id
+      WHERE sp.simulation_id=? AND sp.team_id='EDM' ORDER BY p.primary_position,p.full_name""",(sid,))
     league_rosters=rows(db,"""SELECT sp.team_id,p.id,p.full_name,p.primary_position,p.age_at_start,p.nationality,
       sp.level,sp.status,c.cap_hit,c.end_season,c.expiry_status,c.nmc,c.ntc
       FROM simulation_players sp JOIN players p ON p.id=sp.player_id

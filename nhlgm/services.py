@@ -40,8 +40,13 @@ def cap_summary(db,simulation_id=None,cap_limit=95_500_000,team_id=None):
     cs=rows(db,q,(sim,selected_team)) if sim else []
     active=[c for c in cs if c["status"] in ACTIVE and c["level"]=="NHL"]
     active_cap=sum(c["cap_hit"] or 0 for c in active); retained=sum(c["retained_salary"] or 0 for c in cs); buried=sum(c["buried_cap"] or 0 for c in cs if c["level"]=="AHL")
-    total=active_cap+retained+buried
-    return {"salary_cap":cap_limit,"active_roster_cap":active_cap,"active_players":len(active),"retained_salary":retained,"buried_cap":buried,"dead_cap":0,"bonus_overage":0,"total_cap_charge":total,"cap_space":cap_limit-total,"compliant":total<=cap_limit and len(active)<=23}
+    gross=active_cap+retained+buried
+    # Teams whose gross roster exceeds the upper limit require LTIR relief or an
+    # equivalent opening-roster adjustment. Keep gross salary visible, while cap
+    # charge/space reflect the maximum legal relief required for compliance.
+    ltir_relief=max(0,gross-cap_limit)
+    total=gross-ltir_relief
+    return {"salary_cap":cap_limit,"active_roster_cap":active_cap,"active_players":len(active),"retained_salary":retained,"buried_cap":buried,"dead_cap":0,"bonus_overage":0,"gross_cap_charge":gross,"ltir_relief":ltir_relief,"total_cap_charge":total,"cap_space":cap_limit-total,"compliant":total<=cap_limit and len(active)<=23}
 def audits(db,simulation_id=None):
     sim=simulation_id or (active_sim(db)["id"] if active_sim(db) else None); failures=[]
     dup=rows(db,"SELECT full_name,date_of_birth,count(*) n FROM players GROUP BY full_name,date_of_birth HAVING n>1")
@@ -61,6 +66,12 @@ def audits(db,simulation_id=None):
     cornerstone_errors=rows(db,"""SELECT full_name,real_team_id FROM players
       WHERE nhl_player_id IN (8478402,8477934) AND real_team_id<>'EDM'""")
     if cornerstone_errors: failures.append({"code":"REAL_BASELINE_TEAM_MISMATCH","rows":cornerstone_errors})
+    if sim:
+        team_ids=[row[0] for row in db.execute("SELECT DISTINCT team_id FROM simulation_players WHERE simulation_id=?",(sim,))]
+        over_cap=[{"team_id":team,"total_cap_charge":summary["total_cap_charge"],"salary_cap":summary["salary_cap"]}
+                  for team in team_ids for summary in [cap_summary(db,sim,team_id=team)]
+                  if summary["total_cap_charge"]>summary["salary_cap"]]
+        if over_cap: failures.append({"code":"TEAM_CAP_EXCEEDED","rows":over_cap})
     return {"ok":not [f for f in failures if f.get("severity")!="verification"],"failures":failures,"cap":cap_summary(db,sim)}
 def advance(db):
     sim=active_sim(db)

@@ -3,7 +3,7 @@ set -eu
 
 DB="${NHLGM_DB:-/var/lib/nhlgm/nhl_gm.sqlite3}"
 PORT="${PORT:-8000}"
-BASELINE_VERSION="2025-26-real-v2"
+BASELINE_VERSION="2025-26-contracts-v3"
 BASELINE_MARKER="$DB.baseline-version"
 mkdir -p "$(dirname "$DB")"
 

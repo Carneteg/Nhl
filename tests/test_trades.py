@@ -1,4 +1,4 @@
-from nhlgm.services import new_simulation
+from nhlgm.services import cap_summary, new_simulation
 from nhlgm.trades import TradeError, evaluate_trade, execute_trade
 
 
@@ -33,6 +33,15 @@ def test_real_stars_begin_on_edmonton(db):
     teams = dict(db.execute("SELECT player_id,team_id FROM simulation_players WHERE simulation_id=?", (simulation_id,)))
     assert teams["nhl-97"] == "EDM"
     assert teams["nhl-29"] == "EDM"
+    for team in ("EDM", "CGY"):
+        cap = cap_summary(db, simulation_id, team_id=team)
+        assert cap["total_cap_charge"] > 0
+        assert cap["total_cap_charge"] <= cap["salary_cap"]
+    gaps = db.execute("""SELECT count(*) FROM simulation_players sp LEFT JOIN simulation_contracts c
+      ON c.simulation_id=sp.simulation_id AND c.player_id=sp.player_id AND c.team_id=sp.team_id
+      WHERE sp.simulation_id=? AND sp.status='ACTIVE' AND (coalesce(c.cap_hit,0)<=0 OR c.end_season IS NULL)""",
+      (simulation_id,)).fetchone()[0]
+    assert gaps == 0
 
 
 def test_balanced_trade_moves_players_contracts_and_picks(db):

@@ -17,6 +17,9 @@ def test_web_ui_is_english_and_valid_utf8():
     assert "Advance one day" in content
     assert "Ã" not in content
     assert "charset=utf-8" in server_source
+    assert "format(number || 0)" not in content
+    assert "US$0" not in content
+    assert "expiry_status || 'UNKNOWN'" not in content
 
 
 def test_migration_translates_persisted_swedish_messages(db):

@@ -66,8 +66,8 @@ def evaluate_trade(db, simulation_id, user_team, cpu_team, user_players=(), cpu_
     cpu_cap_before = cap_summary(db, simulation_id, team_id=cpu_team)
     user_delta = sum((p["cap_hit"] or 0) for p in incoming["players"]) - sum((p["cap_hit"] or 0) for p in outgoing["players"])
     cpu_delta = -user_delta
-    user_after = user_cap_before["total_cap_charge"] + user_delta
-    cpu_after = cpu_cap_before["total_cap_charge"] + cpu_delta
+    user_after = user_cap_before["gross_cap_charge"] + user_delta
+    cpu_after = cpu_cap_before["gross_cap_charge"] + cpu_delta
     cap_limit = user_cap_before["salary_cap"]
     reasons = []
     if user_after > cap_limit:
@@ -93,8 +93,8 @@ def evaluate_trade(db, simulation_id, user_team, cpu_team, user_players=(), cpu_
     accepted = not reasons
     return {"accepted": accepted, "reasons": reasons, "user_team": user_team, "cpu_team": cpu_team,
             "user_sends": outgoing, "cpu_sends": incoming,
-            "cap": {user_team: {"before": user_cap_before["total_cap_charge"], "after": user_after},
-                    cpu_team: {"before": cpu_cap_before["total_cap_charge"], "after": cpu_after}}}
+            "cap": {user_team: {"before": user_cap_before["gross_cap_charge"], "after": user_after},
+                    cpu_team: {"before": cpu_cap_before["gross_cap_charge"], "after": cpu_after}}}
 
 
 def execute_trade(db, simulation_id, user_team, cpu_team, **assets):

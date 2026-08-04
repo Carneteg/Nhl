@@ -5,8 +5,9 @@ from nhlgm.bootstrap import load_fixtures
 from nhlgm.db import stable_player_id
 from nhlgm.exporter import SHEETS, export
 from nhlgm.services import advance, audits, cap_summary, new_simulation
-from nhlgm.sync import (SourceError, contract_for_season, parse_capwages_page,
+from nhlgm.sync import (CapWagesClient, SourceError, contract_for_season, parse_capwages_page,
                         player_slug, sync_league, sync_team_roster)
+from nhlgm.web import snapshot
 
 
 ROSTER = {"forwards": [{"id": 8478402, "firstName": {"default": "Connor"},
@@ -51,7 +52,8 @@ def test_roster_contract_mapping_and_idempotency(db):
     player = db.execute("SELECT * FROM players").fetchone()
     assert player["age_at_start"] == 28 and player["nationality"] == "CAN"
     contract = db.execute("SELECT * FROM contracts").fetchone()
-    assert contract["cap_hit"] == 12_500_000 and contract["expiry_status"] == "UFA" and contract["nmc"] == 1
+    assert contract["cap_hit"] == 12_500_000 and contract["end_season"] == 2026
+    assert contract["expiry_status"] == "UFA" and contract["nmc"] == 1
     assert db.execute("SELECT count(*) FROM players").fetchone()[0] == 1
     assert db.execute("SELECT count(*) FROM contracts").fetchone()[0] == 1
 
@@ -80,6 +82,22 @@ def test_contract_parser_and_slug():
     assert player_slug("Arvid Söderblom") == "arvid-soderblom"
 
 
+def test_capwages_resolves_official_name_variants():
+    client = CapWagesClient(cache="/tmp/unused-cap-cache", delay=0)
+    client._player_slugs = lambda force=False: ["sam-montembeault", "samuel-bolduc", "zack-bolduc"]
+    assert client.resolve_slug("Samuel Montembeault") == "sam-montembeault"
+    assert client.resolve_slug("Zachary Bolduc") == "zack-bolduc"
+
+
+def test_main_roster_state_includes_contract_data(db):
+    sync_team_roster(db, client=FakeNHL(), contract_client=FakeCap())
+    new_simulation(db)
+    player = snapshot(db)["roster"][0]
+    assert player["cap_hit"] == 12_500_000
+    assert player["end_season"] == 2026
+    assert player["expiry_status"] == "UFA"
+
+
 def test_baseline_isolated_from_simulation(db):
     sync_team_roster(db, client=FakeNHL(), contracts=False)
     sid = new_simulation(db)
@@ -102,6 +120,17 @@ def test_league_dry_run_rolls_back_reset(db):
     before = db.execute("SELECT count(*) FROM players WHERE real_team_id='EDM'").fetchone()[0]
     result = sync_league(db, teams=("SJS",), dry_run=True, contracts=False, client=FakeNHL())
     assert result["dry_run"] and db.execute("SELECT count(*) FROM players WHERE real_team_id='EDM'").fetchone()[0] == before
+
+
+def test_league_sync_blocks_active_player_without_contract(db):
+    class MissingCap:
+        def player(self, slug, force=False):
+            raise SourceError("contract unavailable")
+    try:
+        sync_league(db, teams=("EDM",), contracts=True, client=FakeNHL(), contract_client=MissingCap())
+        assert False
+    except SourceError as error:
+        assert "contract quality gate failed" in str(error)
 
 
 def test_cap_excludes_ahl_traded_and_retained_once(db):

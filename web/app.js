@@ -1,6 +1,6 @@
 let state, page = 'overview', selectedTeam = null;
 const $ = selector => document.querySelector(selector);
-const money = number => new Intl.NumberFormat('en-CA', {style:'currency',currency:'USD',maximumFractionDigits:0}).format(number || 0);
+const money = number => number > 0 ? new Intl.NumberFormat('en-CA', {style:'currency',currency:'USD',maximumFractionDigits:0}).format(number) : 'Verification required';
 const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 
 async function load() {
@@ -38,8 +38,8 @@ function roster(level='NHL', team='EDM') {
   return `<h1>${team === 'EDM' ? (level === 'NHL' ? 'Roster' : 'AHL / Farm Team') : `${team} Roster`}</h1>
     <p class="subtitle">Real-world baseline copied into isolated simulation state.</p>
     <div class="toolbar"><input id="search" placeholder="Search players"><select id="pos"><option value="">All positions</option><option>F</option><option>D</option><option>G</option></select></div>
-    <table><thead><tr><th>#</th><th>Player</th><th>Pos</th><th>Age</th><th>Status</th><th>Cap hit</th><th>Expiry</th>${team === 'EDM' ? '<th>Actions</th>' : ''}</tr></thead><tbody>
-    ${players.map(player => `<tr data-name="${escapeHtml(player.full_name.toLowerCase())}" data-pos="${escapeHtml(player.primary_position)}"><td>${player.jersey_number || '—'}</td><td>${escapeHtml(player.full_name)}</td><td>${escapeHtml(player.primary_position || 'UNKNOWN')}</td><td>${player.age_at_start || '—'}</td><td><span class="tag">${escapeHtml(player.status)}</span></td><td>${money(player.cap_hit)}</td><td>${escapeHtml(player.expiry_status || 'UNKNOWN')}</td>${team === 'EDM' ? `<td class="actions"><button onclick="act('${player.id}','${level === 'NHL' ? 'AHL' : 'NHL'}')">${level === 'NHL' ? 'Assign to AHL' : 'Recall'}</button><button onclick="act('${player.id}','TRADE_BLOCK')">Trade block</button><button onclick="act('${player.id}','WAIVERS')">Waivers</button></td>` : ''}</tr>`).join('')}
+    <table><thead><tr><th>#</th><th>Player</th><th>Pos</th><th>Age</th><th>Status</th><th>Cap hit</th><th>Contract expiry</th>${team === 'EDM' ? '<th>Actions</th>' : ''}</tr></thead><tbody>
+    ${players.map(player => `<tr data-name="${escapeHtml(player.full_name.toLowerCase())}" data-pos="${escapeHtml(player.primary_position)}"><td>${player.jersey_number || '—'}</td><td>${escapeHtml(player.full_name)}</td><td>${escapeHtml(player.primary_position || 'Verification required')}</td><td>${player.age_at_start || '—'}</td><td><span class="tag">${escapeHtml(player.status)}</span></td><td>${money(player.cap_hit)}</td><td>${player.end_season ? `${player.end_season} ${escapeHtml(player.expiry_status || '')}` : 'Verification required'}</td>${team === 'EDM' ? `<td class="actions"><button onclick="act('${player.id}','${level === 'NHL' ? 'AHL' : 'NHL'}')">${level === 'NHL' ? 'Assign to AHL' : 'Recall'}</button><button onclick="act('${player.id}','TRADE_BLOCK')">Trade block</button><button onclick="act('${player.id}','WAIVERS')">Waivers</button></td>` : ''}</tr>`).join('')}
     </tbody></table>`;
 }
 
@@ -49,7 +49,7 @@ function inbox() {
 
 function contractsPage() {
   const contracts=state.contracts.filter(contract=>contract.team_id==='EDM');
-  return `<h1>Contracts</h1><p class="subtitle">Simulation contracts move with players after completed trades.</p><table><thead><tr><th>Player</th><th>Position</th><th>Cap hit</th><th>Salary</th><th>Expires</th><th>Status</th><th>Clause</th></tr></thead><tbody>${contracts.map(contract=>`<tr><td>${escapeHtml(contract.full_name)}</td><td>${escapeHtml(contract.primary_position)}</td><td>${money(contract.cap_hit)}</td><td>${money(contract.salary)}</td><td>${contract.end_season || 'UNKNOWN'}</td><td>${escapeHtml(contract.expiry_status || 'UNKNOWN')}</td><td>${contract.nmc?'NMC':escapeHtml(contract.ntc || '—')}</td></tr>`).join('')}</tbody></table>`;
+  return `<h1>Contracts</h1><p class="subtitle">Simulation contracts move with players after completed trades.</p><table><thead><tr><th>Player</th><th>Position</th><th>Cap hit</th><th>Salary</th><th>Expires</th><th>Status</th><th>Clause</th></tr></thead><tbody>${contracts.map(contract=>`<tr><td>${escapeHtml(contract.full_name)}</td><td>${escapeHtml(contract.primary_position)}</td><td>${money(contract.cap_hit)}</td><td>${money(contract.salary)}</td><td>${contract.end_season || 'Verification required'}</td><td>${escapeHtml(contract.expiry_status || 'Verification required')}</td><td>${contract.nmc?'NMC':escapeHtml(contract.ntc || '—')}</td></tr>`).join('')}</tbody></table>`;
 }
 
 function otherTeams() {
